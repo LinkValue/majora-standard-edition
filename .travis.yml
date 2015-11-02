@@ -1,0 +1,16 @@
+language: php
+
+php:
+  - 5.5
+  - 5.6
+
+before_script:
+  - make travis
+
+script:
+  - make run-travis
+
+notifications:
+  slack:
+    rooms:
+      - link-value:i5EtHFzH8DMHR3JHqzr5E3p4#channel

@@ -1,0 +1,23 @@
+user_name: vagrant
+projects_dir: /var/www/
+ssh_key: ~/.ssh/id_rsa
+workspace: /home/vagrant
+ruby_download_url: https://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz
+ruby_version: 2.2.3
+
+pools:
+  - { name: 'www', user: 'vagrant', group: 'vagrant', listen: '127.0.0.1:9000' }
+
+php_memory_limit: 2G
+
+sites: ~
+  # - { name: 'site name', docroot: '/absolute/path/to/webroot', server_name: '*.site_name.dev' }
+
+mysql:
+  databases: ~
+    # - { name: 'site name' }
+
+  users: ~
+    # - { name: 'site name', host: '%' }
+
+  bind_address: 0.0.0.0

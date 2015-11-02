@@ -1,0 +1,17 @@
+- hosts: local
+  sudo: yes
+  roles:
+    - ssh_key
+    - common
+    # - ruby
+    - nginx
+    - php
+    # - hhvm
+    - mysql
+    - nodejs
+    - redis
+    # - wkhtmltopdf
+    # - sass
+  vars_files:
+    - group_vars/app.yml
+    - group_vars/app.local.yml
