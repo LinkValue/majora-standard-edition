@@ -1,18 +1,41 @@
-# Vm
-vm-build:
-	test -f ansible/group_vars/app.local.yml || cp ansible/group_vars/app.local.yml.dist ansible/group_vars/app.local.yml
-	vagrant up --provision || true
+#########################################################
+######## VM #############################################
+#########################################################
 
-vm-install:
-	vagrant provision || true
+vm-download:
+	test -f ansible/vars.local.yml || cp ansible/vars.local.yml.dist ansible/vars.local.yml
+	ansible-galaxy install --force --role-file=requirements.yml
+
+vm-ssh:
+	vagrant ssh
+
+vm-up:
+	vagrant up
+
+vm-halt:
+	vagrant halt
+
+vm-provision:
+	vagrant up --no-provision
+	vagrant provision
 
 vm-destroy:
-	vagrant destroy -f || true
+	vagrant destroy
 
-vm-rebuild: vm-destroy vm-build
+vm-rebuild: vm-destroy vm-provision
+
+vm-make-prepare:
+	vagrant ssh -c "cd $(WEBROOT) && make prepare"
+
+vm-provision-prepare: vm-provision vm-make-prepare
+
+vm-install-project: vm-download vm-provision-prepare
+#########################################################
+######## PROJECT ########################################
+#########################################################
 
 # First install
-prepare: install db-build
+prepare: install
 	@echo "Project is built !"
 
 # Clean
@@ -47,8 +70,7 @@ install-bin:
 	php bin/php-cs-fixer self-update
 
 install-git-hooks:
-	test -f .git/hooks/pre-commit || curl https://raw.githubusercontent.com/LinkValue/symfony-git-hooks/master/pre-commit -o .git/hooks/pre-commit
-	chmod +x .git/hooks/pre-commit || true
+	test -f .git/hooks/pre-commit || (test -f .git && curl https://raw.githubusercontent.com/LinkValue/symfony-git-hooks/master/pre-commit -o .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit || true)
 
 install-composer:
 	./bin/composer install

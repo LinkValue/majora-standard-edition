@@ -1,17 +1,17 @@
+---
+
 - hosts: local
-  sudo: yes
+  become: yes
+  become_user: root
   roles:
-    - ssh_key
-    - common
-    # - ruby
+    - common-packages
+    - etc-hosts
+    - ssh-forward
+    - oh-my-zsh
     - nginx
     - php
-    # - hhvm
-    - mysql
-    - nodejs
-    - redis
-    # - wkhtmltopdf
-    # - sass
+    - composer
+    - sass
   vars_files:
-    - group_vars/app.yml
-    - group_vars/app.local.yml
+    - vars.yml
+    - vars.local.yml

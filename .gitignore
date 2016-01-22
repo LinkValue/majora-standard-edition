@@ -1,7 +1,8 @@
 # Vagrant
 .vagrant
 .vagrant.*
-ansible/group_vars/dev.local.yml
+ansible/vars.local.yml
+ansible/roles
 
 # Docker
 docker/
