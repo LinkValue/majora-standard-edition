@@ -43,9 +43,6 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-#majora_generator:
-#    skeletons_path: %kernel.root_dir%/../skeletons/skeleton-name
-
 # Majora Extra Framework
 # majora_framework_extra:
 #     clock:
@@ -62,9 +59,7 @@ swiftmailer:
 #         client:
 #             type: api
 #             api:
-#                 route: drop_node_websocket_event
+#                 route: node_websocket_event
 #             listen:
-#                 - drop.address.created
-#                 - drop.address.edited
-#                 - drop.order.created
-#                 - drop.order.edited
+#                 - app.entity.created
+#                 - app.entity.edited
