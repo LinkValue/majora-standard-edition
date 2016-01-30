@@ -41,6 +41,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         template: 'vhost.symfony2.j2'
                     }
                 ],
+                mysql: {
+                    databases: [
+                        {
+                            name: 'majora-standard-edition'
+                        }
+                    ]
+                },
                 workspace: '/var/www/majora-standard-edition'
             }
         end
