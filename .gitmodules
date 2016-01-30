@@ -1,3 +1,0 @@
-[submodule "ansible/roles"]
-	path = ansible/roles
-	url = git@github.com:LinkValue/majora-ansible-playbook.git

@@ -1,0 +1,7 @@
+workspace: workspace
+
+timezone: UTC
+
+sites: sites
+
+php_version: '5.6'
