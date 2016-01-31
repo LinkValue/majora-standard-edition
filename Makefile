@@ -28,7 +28,7 @@ vm-rebuild: vm-destroy vm-provision
 vm-install-project: vm-download vm-provision vm-project-prepare
 
 vm-project-prepare:
-	vagrant ssh -c "cd $(WEBROOT) && make prepare"
+	vagrant ssh -c "cd $(WORKSPACE) && make prepare"
 
 #########################################################
 ######## PROJECT ########################################
